@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class PannelloTabella1 extends PannelloTabella {
+public class PannelloTabellaFilm extends PannelloTabella {
 		
 	private JScrollPane sp;
 	/*private JTable attori;
@@ -39,9 +39,9 @@ public class PannelloTabella1 extends PannelloTabella {
 	
 	private PanelSwitcher panelSwitcher;
 	
-	public PannelloTabella1() {}
+	public PannelloTabellaFilm() {}
 	
-	public PannelloTabella1(PanelSwitcher panelSwitcher) {
+	public PannelloTabellaFilm(PanelSwitcher panelSwitcher) {
         this.panelSwitcher = panelSwitcher;
 
        // this.attori = new JTable(data1, colonna1);

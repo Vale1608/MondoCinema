@@ -28,7 +28,7 @@ public class MondoCinemaGui implements PanelSwitcher{
     private JFrame frame;
    
     
-    private PannelloTabella2 pannelloTabella2;
+    private PannelloTabellaAttori pannelloTabella2;
     private PannelloTabella pannelloTabella;
     private PannelloAddFilm pannelloAddFilm;
     private FilmRepository filmRepository = new FilmRepositoryImp();
@@ -49,15 +49,15 @@ public class MondoCinemaGui implements PanelSwitcher{
         JMenuItem caricaAttori=new JMenuItem("Carica");
         JMenu film=new JMenu("Film");
         JMenuItem caricaFilm=new JMenuItem("Carica");
-        JMenu recita=new JMenu("Recita");
-        JMenuItem caricaRecita=new JMenuItem("Carica");
+       // JMenu recita=new JMenu("Recita");
+       // JMenuItem caricaRecita=new JMenuItem("Carica");
         JMenu proiezioni=new JMenu("Proiezioni");
         JMenuItem caricaProiezioni=new JMenuItem("Carica");
-        JMenu sale=new JMenu("Sale");
-        JMenuItem caricaSale=new JMenuItem("Carica");
+       // JMenu sale=new JMenu("Sale");
+       // JMenuItem caricaSale=new JMenuItem("Carica");
         film.add(caricaFilm);
-        sale.add(caricaSale);
-        recita.add(caricaRecita);
+       // sale.add(caricaSale);
+       // recita.add(caricaRecita);
         proiezioni.add(caricaProiezioni);
         attori.add(caricaAttori);
 
@@ -102,9 +102,9 @@ public class MondoCinemaGui implements PanelSwitcher{
         menuBar.add(comandi);
         menuBar.add(attori);
         menuBar.add(film);
-        menuBar.add(recita);
+       // menuBar.add(recita);
         menuBar.add(proiezioni);
-        menuBar.add(sale);
+        //menuBar.add(sale);
         
         addFilm.addActionListener(new ActionListener() {
             @Override
@@ -154,7 +154,7 @@ public class MondoCinemaGui implements PanelSwitcher{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				pannelloTabella =new PannelloTabella2(MondoCinemaGui.this);
+				pannelloTabella =new PannelloTabellaAttori(MondoCinemaGui.this);
 				pannelloTabella.cercaTable();
 				switchTo(pannelloTabella);
 			}
@@ -165,13 +165,23 @@ public class MondoCinemaGui implements PanelSwitcher{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				pannelloTabella = new PannelloTabella1(MondoCinemaGui.this);
+				pannelloTabella = new PannelloTabellaFilm(MondoCinemaGui.this);
 				pannelloTabella.cercaTable();
 				switchTo(pannelloTabella);
 				
 			}
 		});              
-        caricaProiezioni.addActionListener(new CercaTable());
+        caricaProiezioni.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				pannelloTabella=new PannelloTabellaProiezioni(MondoCinemaGui.this);
+				pannelloTabella.cercaTable();
+				switchTo(pannelloTabella);
+			}
+        	
+        });
        // this.frame.add(this.pannelloTabella, BorderLayout.CENTER);
        // this.pannelloTabella();
         this.frame.setVisible(true);

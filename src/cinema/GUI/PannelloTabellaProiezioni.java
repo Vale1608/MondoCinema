@@ -10,16 +10,16 @@ import cinema.model.Proiezioni;
 import cinema.repository.ProiezioniRepository;
 import cinema.repository.ProiezioniRepositoryImp;
 
-public class PannelloTabella3 extends PannelloTabella {
+public class PannelloTabellaProiezioni extends PannelloTabella {
 	
 	private JScrollPane sp;
 	private JTable proiezioni;
 	private String colonna[]={"CodProiezione","CodFilm","CodSala", "Incasso","DataProiezione"};
 	private ProiezioniRepository proiezioniRepository = new ProiezioniRepositoryImp();
 	
-	public PannelloTabella3() {}
+	public PannelloTabellaProiezioni() {}
 	
-	public PannelloTabella3(PanelSwitcher panelSwitcher) {
+	public PannelloTabellaProiezioni(PanelSwitcher panelSwitcher) {
         
 		this.panelSwitcher = panelSwitcher;
 

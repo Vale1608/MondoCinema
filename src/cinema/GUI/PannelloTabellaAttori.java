@@ -13,16 +13,16 @@ import cinema.repository.AttoriRepositoryImp;
 import cinema.repository.FilmRepository;
 import cinema.repository.FilmRepositoryImp;
 
-public class PannelloTabella2 extends PannelloTabella {
+public class PannelloTabellaAttori extends PannelloTabella {
 
 	private JScrollPane sp;
 	private JTable attori ;
 	private String colonna[]={"CodAttore","Nome","AnnoNascita", "Nazionalita"};
 	private AttoriRepository attoriRepository = new AttoriRepositoryImp();
 	
-	public PannelloTabella2() {}
+	public PannelloTabellaAttori() {}
 	
-	public PannelloTabella2(PanelSwitcher panelSwitcher) {
+	public PannelloTabellaAttori(PanelSwitcher panelSwitcher) {
         
 		this.panelSwitcher = panelSwitcher;
 
