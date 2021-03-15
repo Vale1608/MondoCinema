@@ -160,7 +160,17 @@ public class MondoCinemaGui implements PanelSwitcher{
 			}
         
         });
-        caricaFilm.addActionListener(new CercaTable());              
+        caricaFilm.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				pannelloTabella = new PannelloTabella1(MondoCinemaGui.this);
+				pannelloTabella.cercaTable();
+				switchTo(pannelloTabella);
+				
+			}
+		});              
         caricaProiezioni.addActionListener(new CercaTable());
        // this.frame.add(this.pannelloTabella, BorderLayout.CENTER);
        // this.pannelloTabella();
