@@ -11,7 +11,7 @@ public class Attori {
 		
 	}
 	
-	public Attori(int CodAttore,String Nome,int AnnoNscita,String Nazionalita) {
+	public Attori(int CodAttore,String Nome,int AnnoNascita,String Nazionalita) {
 		this.CodAttore=CodAttore;
 		this.Nome=Nome;
 		this.AnnoNascita=AnnoNascita;
@@ -46,8 +46,8 @@ public class Attori {
 		return Nazionalita;
 	}
 
-	public void setNazionalita(String Nazionalita) {
-		Nazionalita = Nazionalita;
+	public void setNazionalita(String nazionalita) {
+		Nazionalita = nazionalita;
 	}
 	
 	@Override

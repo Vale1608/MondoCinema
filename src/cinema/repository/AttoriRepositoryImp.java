@@ -75,7 +75,7 @@ public class AttoriRepositoryImp implements AttoriRepository
 		PreparedStatement preparedStatement = null;
 		int isDeleted = 0;
         try {
-            preparedStatement = conn.prepareStatement("DELETE FROM Attori WHERE CodAttore = ?");
+            preparedStatement = conn.prepareStatement("DELETE FROM attori WHERE CodAttore = ?");
 
             preparedStatement.setInt(1, CodAttore);
 
@@ -185,7 +185,7 @@ public class AttoriRepositoryImp implements AttoriRepository
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM Attori WHERE CodAttore = ? ");
+			preparedStatement = conn.prepareStatement("SELECT * FROM attori WHERE CodAttore = ? ");
 			preparedStatement.setInt(1, CodAttore);
 			
 			ResultSet resultSet= preparedStatement.executeQuery();
@@ -220,7 +220,7 @@ public class AttoriRepositoryImp implements AttoriRepository
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM attori WHERE nome=? and AnnoNascita=?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM attori WHERE Nome=? and AnnoNascita=?");
 			preparedStatement.setString(1,nome );
 			preparedStatement.setInt(2,annoNascita);
 			

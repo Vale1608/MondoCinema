@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cinema.model.Film;
+import cinema.model.Proiezioni;
 
 import java.sql.*;
 
@@ -17,7 +18,7 @@ public class FilmRepositoryImp implements FilmRepository {
 
 	        int isSaved = 0;
 	        try {
-	            preparedStatement = conn.prepareStatement("INSERT INTO contact VALUES(null,?,?,?,?,?)");
+	            preparedStatement = conn.prepareStatement("INSERT INTO film VALUES(null,?,?,?,?,?)");
 
 	            preparedStatement.setInt(1, film.getCodFilm());
 	            preparedStatement.setString(2, film.getTitolo());
@@ -101,15 +102,15 @@ public class FilmRepositoryImp implements FilmRepository {
 	}
 
 	@Override
-	public boolean delete(Integer CodFilm) {
+	public boolean delete(Integer codFilm) {
 		
 		Connection conn = ConnectionDatabase.getConnection();
 		PreparedStatement preparedStatement = null;
 		int isDeleted = 0;
         try {
-            preparedStatement = conn.prepareStatement("DELETE FROM Film WHERE CodFilm = ?");
+            preparedStatement = conn.prepareStatement("DELETE FROM film WHERE CodFilm = ?");
 
-            preparedStatement.setInt(1, CodFilm);
+            preparedStatement.setInt(1, codFilm);
 
             isDeleted = preparedStatement.executeUpdate();
 
@@ -135,7 +136,7 @@ public class FilmRepositoryImp implements FilmRepository {
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement=conn.prepareStatement("SELECT * FROM film WHERE titolo=? and codFilm=?");
+			preparedStatement=conn.prepareStatement("SELECT * FROM film WHERE Titolo=? and CodFilm=?");
 			preparedStatement.setString(1, titolo);
 			preparedStatement.setInt(2, codFilm);
 			
@@ -147,8 +148,8 @@ public class FilmRepositoryImp implements FilmRepository {
 				 film.setTitolo( resultSet.getString("Titolo"));
 	             film.setAnnoProduzione( resultSet.getString("AnnoProduzione"));
 	             film.setNazionalita( resultSet.getString("Nazionalita") );
-	             film.setRegista( resultSet.getString("regista") );
-	             film.setGenere( resultSet.getString("genere") );
+	             film.setRegista( resultSet.getString("Regista") );
+	             film.setGenere( resultSet.getString("Genere") );
 				
 			}
 			
@@ -169,6 +170,7 @@ public class FilmRepositoryImp implements FilmRepository {
 		
 		
 	}
+	
 
 	@Override
 	public List<Film> film() {
@@ -189,8 +191,8 @@ public class FilmRepositoryImp implements FilmRepository {
 	                f.setTitolo( resultSet.getString("Titolo"));
 	                f.setAnnoProduzione( resultSet.getString("AnnoProduzione"));
 	                f.setNazionalita( resultSet.getString("Nazionalita") );
-	                f.setRegista( resultSet.getString("regista") );
-	                f.setGenere( resultSet.getString("genere") );
+	                f.setRegista( resultSet.getString("Regista") );
+	                f.setGenere( resultSet.getString("Genere") );
 	             
 	               
 
@@ -216,21 +218,21 @@ public class FilmRepositoryImp implements FilmRepository {
 	}
 
 	@Override
-	public Film getFilm(Integer CodFilm) {
+	public Film getFilm(Integer codFilm) {
 		
 		Connection conn = ConnectionDatabase.getConnection();
 		Film film=null;
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM Film WHERE CodFilm = ? ");
-			preparedStatement.setInt(1, CodFilm);
+			preparedStatement = conn.prepareStatement("SELECT * FROM film WHERE CodFilm = ? ");
+			preparedStatement.setInt(1, codFilm);
 			
 			ResultSet resultSet= preparedStatement.executeQuery();
 			if(resultSet.next()) {
 				film=new Film();
 				
-				film.setCodFilm(CodFilm);
+				film.setCodFilm(codFilm);
 				film.setTitolo(resultSet.getString("Titolo"));
 				film.setAnnoProduzione(resultSet.getString("AnnoProduzione"));
 				film.setNazionalita(resultSet.getString("Nazionalita"));
@@ -260,7 +262,7 @@ public class FilmRepositoryImp implements FilmRepository {
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM film WHERE titolo=? and annoProduzione=?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM film WHERE Titolo=? and AnnoProduzione=?");
 			preparedStatement.setString(1,titolo );
 			preparedStatement.setString(2,annoProduzione);
 			

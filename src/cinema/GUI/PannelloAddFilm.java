@@ -14,7 +14,7 @@ import cinema.model.Film;
 import cinema.repository.FilmRepository;
 import cinema.repository.FilmRepositoryImp;
 
-public class PannelloAddFilm extends JPanel {
+public class PannelloAddFilm extends JPanel implements PanelSwitcher {
 	
 	private JLabel labelCodFilm = new JLabel("CodFilm");
     private JLabel labelTitolo = new JLabel("Titolo");
@@ -34,7 +34,7 @@ public class PannelloAddFilm extends JPanel {
     private JPanel jPanelSouth = new JPanel();
 
     private PanelSwitcher panelSwitcher;
-
+    private PannelloTabellaFilm pannelloTabFilm;
     private Film film;
 
     private FilmRepository filmRepository = new FilmRepositoryImp();
@@ -64,9 +64,23 @@ public PannelloAddFilm(PanelSwitcher panelSwitcher) {
         indietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	
+           	     
+          
+            
+            //PannelloTabella pt= new PannelloTabellaFilm();
+            panelSwitcher.pannelloTabella();
+            
+            
+            }
+        });
+        /* indietro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 panelSwitcher.pannelloTabella();
             }
         });
+*/
 
         salva.addActionListener(new ActionListener() {
             @Override
@@ -127,6 +141,18 @@ public PannelloAddFilm(PanelSwitcher panelSwitcher) {
             String genere = textGenere.getText();
         }
     }
+	@Override
+	public void pannelloTabella() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void pannelloAddFilm() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
    
 

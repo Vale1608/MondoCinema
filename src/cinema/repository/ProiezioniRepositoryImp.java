@@ -49,7 +49,7 @@ public class ProiezioniRepositoryImp implements ProiezioniRepository {
 		int modificato=0;
 		try {
 			//controllare scritte stringa 
-			preparedStatement = conn.prepareStatement("UPDATE proiezioni  codFilm = ?, codSala = ?, incasso = ?, DataProiezione = ?, WHERE CodProiezione = ?");
+			preparedStatement = conn.prepareStatement("UPDATE proiezioni  CodFilm = ?, CodSala = ?, Incasso = ?, DataProiezione = ?, WHERE CodProiezione = ?");
 			
 	        preparedStatement.setInt(1, proiezione.getCodFilm());
 	        preparedStatement.setInt(2, proiezione.getCodSala());
@@ -80,7 +80,7 @@ public class ProiezioniRepositoryImp implements ProiezioniRepository {
 		PreparedStatement preparedStatement = null;
 		int isDeleted = 0;
         try {
-            preparedStatement = conn.prepareStatement("DELETE FROM Film WHERE CodProiezione = ?");
+            preparedStatement = conn.prepareStatement("DELETE FROM film WHERE CodProiezione = ?");
 
             preparedStatement.setInt(3, CodProiezione);
 
@@ -108,7 +108,7 @@ public class ProiezioniRepositoryImp implements ProiezioniRepository {
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement=conn.prepareStatement("SELECT * FROM proiezioni WHERE DataProiezione=? and codFilm=?");
+			preparedStatement=conn.prepareStatement("SELECT * FROM proiezioni WHERE DataProiezione=? and CodFilm=?");
 			preparedStatement.setString(5, dataProiezione);
 			preparedStatement.setInt(1, codFilm);
 			
@@ -158,10 +158,10 @@ public class ProiezioniRepositoryImp implements ProiezioniRepository {
 	            while(resultSet.next()) {
 	                Proiezioni p = new Proiezioni();
 	                
-	                p.setCodFilm(resultSet.getInt("codFilm"));
-	                p.setCodSala(resultSet.getInt("codSala"));
-	                p.setCodProiezione(resultSet.getInt("codProiezione"));
-	                p.setIncasso( resultSet.getInt("incasso") );
+	                p.setCodFilm(resultSet.getInt("CodFilm"));
+	                p.setCodSala(resultSet.getInt("CodSala"));
+	                p.setCodProiezione(resultSet.getInt("CodProiezione"));
+	                p.setIncasso( resultSet.getInt("Incasso") );
 	                p.setDataProiezione( resultSet.getString("DataProiezione") );
 	               
 
@@ -196,7 +196,7 @@ public class ProiezioniRepositoryImp implements ProiezioniRepository {
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM film WHERE codFilm=? and dataProiezione=?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM film WHERE CodFilm=? and DataProiezione=?");
 			preparedStatement.setInt(1,codFilm );
 			preparedStatement.setString(2,dataProiezione);
 			
@@ -204,10 +204,10 @@ public class ProiezioniRepositoryImp implements ProiezioniRepository {
 			if(resultSet.next()) {
 				p=new Proiezioni();
 				
-				p.setCodFilm(resultSet.getInt("codFilm"));
-				p.setCodSala(resultSet.getInt("codSala"));
-	            p.setCodProiezione(resultSet.getInt("codProiezione"));
-	            p.setIncasso( resultSet.getInt("incasso") );
+				p.setCodFilm(resultSet.getInt("CodFilm"));
+				p.setCodSala(resultSet.getInt("CodSala"));
+	            p.setCodProiezione(resultSet.getInt("CodProiezione"));
+	            p.setIncasso( resultSet.getInt("Incasso") );
 	            p.setDataProiezione( resultSet.getString("DataProiezione") );
 			}
 			
@@ -235,7 +235,7 @@ public class ProiezioniRepositoryImp implements ProiezioniRepository {
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM film WHERE codFilm=? and codSala=?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM film WHERE CodFilm=? and CodSala=?");
 			preparedStatement.setInt(1,codFilm);
 			preparedStatement.setInt(2,codSala);
 			
@@ -243,11 +243,11 @@ public class ProiezioniRepositoryImp implements ProiezioniRepository {
 			if(resultSet.next()) {
 				p=new Proiezioni();
 				
-				p.setCodFilm(resultSet.getInt("codFilm"));
-				p.setCodSala(resultSet.getInt("codSala"));
-	            p.setCodProiezione(resultSet.getInt("codProiezione"));
-	            p.setIncasso( resultSet.getInt("incasso") );
-	            p.setDataProiezione( resultSet.getString("dataProiezione") );
+				p.setCodFilm(resultSet.getInt("CodFilm"));
+				p.setCodSala(resultSet.getInt("CodSala"));
+	            p.setCodProiezione(resultSet.getInt("CodProiezione"));
+	            p.setIncasso( resultSet.getInt("Incasso") );
+	            p.setDataProiezione( resultSet.getString("DataProiezione") );
 			}
 			
 		}catch(SQLException e) {
