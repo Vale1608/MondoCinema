@@ -45,8 +45,8 @@ public class PannelloFiltro extends PannelloTabella {
             System.out.println(a);
             if(a != null) {
                this.data[i][1] = a.getTitolo();
-                this.data[i][2] = a.getSala();
-                this.data[i][3] = a.getData();
+               this.data[i][2] = a.getSala();
+               this.data[i][3] = a.getData();
               
             }
 
