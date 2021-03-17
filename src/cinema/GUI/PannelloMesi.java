@@ -11,13 +11,14 @@ import cinema.model.FiltroClasseData;
 import cinema.repository.FiltroDataImp;
 
 
-public class PannelloMesi extends PannelloTabella {
+public class PannelloMesi extends PannelloTabella implements FiltroInterfaccia{
 	
 	private JScrollPane sp;
 	private JTable filtroClasseData;
 	private String colonna[]={"Titolo","Sala","DataProiezione"};
 	private FiltroDataImp filtroData = new FiltroDataImp();
 	protected Object[][] data = new Object[0][0];
+	private String meseRic=null;
 	
 	
 	
@@ -34,9 +35,10 @@ public class PannelloMesi extends PannelloTabella {
 	public void cercaTable() {
 		// TODO Auto-generated method stub
 		String input = JOptionPane.showInputDialog("Inserire numero mese");
+		String mesi= "-"+input+"-";
+        //potevamo mettere un menu a tendina da far selezionare
         
-        
-		List<FiltroClasseData> filtroClasseData= filtroData.fcd(input);
+		List<FiltroClasseData> filtroClasseData= filtroData.fcd(mesi);
 
         this.data = new Object[filtroClasseData.size()][3];
         Iterator<FiltroClasseData> ia = filtroClasseData.iterator();
