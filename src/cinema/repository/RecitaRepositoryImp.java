@@ -18,7 +18,7 @@ import cinema.model.Recita;
 			PreparedStatement preparedStatement = null;
 			int cercato=0;
 			try {
-				preparedStatement=conn.prepareStatement("INSERT INTO Recita VALUES(?,?)");
+				preparedStatement=conn.prepareStatement("INSERT INTO recita VALUES(?,?)");
 				preparedStatement.setInt(1, recita.getCodAttore());
 				preparedStatement.setInt(2, recita.getCodFilm());
 				
@@ -43,7 +43,7 @@ import cinema.model.Recita;
 			
 			int cercato=0;
 			try {
-				preparedStatement = conn.prepareStatement("UPDATE Recita SET codAttore=?,codFilm=?");
+				preparedStatement = conn.prepareStatement("UPDATE recita SET CodAttore=?,CodFilm=?");
 				preparedStatement.setInt(1, recita.getCodAttore());
 				preparedStatement.setInt(2, recita.getCodFilm());
 				
@@ -67,7 +67,7 @@ import cinema.model.Recita;
 			
 			int isDeleted = 0;
 			try {
-				preparedStatement=conn.prepareStatement("DELETE FROM Recita WHERE codAttore=? AND codFilm=?");
+				preparedStatement=conn.prepareStatement("DELETE FROM recita WHERE CodAttore=? AND CodFilm=?");
 				preparedStatement.setInt(1, codAttore);
 				preparedStatement.setInt(2, codFilm);
 				
@@ -96,14 +96,14 @@ import cinema.model.Recita;
 	        try {
 	            statement = conn.createStatement();
 
-	            resultSet = statement.executeQuery("SELECT * FROM Recita");
+	            resultSet = statement.executeQuery("SELECT * FROM recita");
 	            while(resultSet.next()) {
-	                Recita recitina = new Recita();
+	                Recita recitas = new Recita();
 
-	                recitina.setCodAttore(resultSet.getInt("codAttore"));
-	                recitina.setCodFilm(resultSet.getInt("codFilm"));
+	                recitas.setCodAttore(resultSet.getInt("CodAttore"));
+	                recitas.setCodFilm(resultSet.getInt("CodFilm"));
 	               
-	                recita.add(recitina);
+	                recita.add(recitas);
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -128,7 +128,7 @@ import cinema.model.Recita;
 			PreparedStatement preparedStatement = null;
 			
 			try {
-				preparedStatement = conn.prepareStatement("SELECT * FROM Recita WHERE codAttore = ? and codFilm = ?");
+				preparedStatement = conn.prepareStatement("SELECT * FROM recita WHERE CodAttore = ? and CodFilm = ?");
 				
 				preparedStatement.setInt(1, codAttore);
 	            preparedStatement.setInt(2, codFilm);

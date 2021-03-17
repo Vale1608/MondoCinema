@@ -275,4 +275,25 @@ public class MondoCinemaGui implements PanelSwitcher{
 		
 	}
 
+
+	@Override
+	public void setNumero(int n) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void PannelloFiltraPerCodFilm() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void pannelloTabellaCodFilm(int n) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -14,7 +14,7 @@ import cinema.model.Film;
 import cinema.repository.FilmRepository;
 import cinema.repository.FilmRepositoryImp;
 
-public class PannelloAddFilm extends JPanel {
+public class PannelloAddFilm extends JPanel implements PanelSwitcher {
 	
 	private JLabel labelCodFilm = new JLabel("CodFilm");
     private JLabel labelTitolo = new JLabel("Titolo");
@@ -34,7 +34,7 @@ public class PannelloAddFilm extends JPanel {
     private JPanel jPanelSouth = new JPanel();
 
     private PanelSwitcher panelSwitcher;
-
+    private PannelloTabellaFilm pannelloTabFilm;
     private Film film;
 
     private FilmRepository filmRepository = new FilmRepositoryImp();
@@ -64,9 +64,23 @@ public PannelloAddFilm(PanelSwitcher panelSwitcher) {
         indietro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	
+           	     
+          
+            
+            //PannelloTabella pt= new PannelloTabellaFilm();
+            panelSwitcher.pannelloTabella();
+            
+            
+            }
+        });
+        /* indietro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 panelSwitcher.pannelloTabella();
             }
         });
+*/
 
         salva.addActionListener(new ActionListener() {
             @Override
@@ -74,14 +88,14 @@ public PannelloAddFilm(PanelSwitcher panelSwitcher) {
 
 
                 if(film != null) {
-
+                	String codiceFilm=textCodFilm.getText();
+                    film.setCodFilm(Integer.parseInt(codiceFilm));
                     film.setTitolo(textTitolo.getText());
                     film.setAnnoProduzione(textAnnoProduzione.getText());
-                    film.setNazionalita(textNazionalita.getText());
+                    //film.setNazionalita(textNazionalita.getText());
                     film.setRegista(textRegista.getText());
                     film.setGenere(textGenere.getText());
-                    String codiceFilm=textCodFilm.getText();
-                    film.setCodFilm(Integer.parseInt(codiceFilm));
+                    
 
 
                     filmRepository.update(film);
@@ -89,15 +103,16 @@ public PannelloAddFilm(PanelSwitcher panelSwitcher) {
 
                 else {
 
-                    String titolo = textTitolo.getText();
+                    //
                     String codiceFilm=textCodFilm.getText();
                     int codFilm = Integer.parseInt(codiceFilm);
+                    String titolo = textTitolo.getText();
                     String annoProduzione = textAnnoProduzione.getText();
-                    String Nazionalita = textNazionalita.getText();
+                    //String Nazionalita = textNazionalita.getText();
                     String regista = textRegista.getText();
                     String genere = textGenere.getText();
 
-                    Film film = new Film(codFilm, annoProduzione, Nazionalita,regista,genere);
+                    Film film = new Film(codFilm, titolo, annoProduzione,regista,genere);
                     filmRepository.save(film);
                 }
 
@@ -127,6 +142,18 @@ public PannelloAddFilm(PanelSwitcher panelSwitcher) {
             String genere = textGenere.getText();
         }
     }
+	@Override
+	public void pannelloTabella() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void pannelloAddFilm() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
    
 

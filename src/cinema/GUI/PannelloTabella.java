@@ -1,5 +1,5 @@
 package cinema.GUI;
-
+/**/
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
