@@ -8,18 +8,23 @@ public class FiltroClasseData {
 		return titolo;
 	}
 	public void setTitolo(String titolo) {
-		titolo = titolo;
+		this.titolo = titolo;
 	}
 	public String getData() {
 		return data;
 	}
 	public void setData(String data) {
-		data = data;
+		this.data = data;
 	}
 	public String getSala() {
 		return sala;
 	}
 	public void setSala(String sala) {
-		sala = sala;
+		this.sala = sala;
 	}
+	@Override
+	public String toString() {
+		return "titolo=" + titolo + ", data=" + data + ", sala=" + sala ;
+	}
+	
 }

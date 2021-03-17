@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -16,8 +17,10 @@ import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
 
 import cinema.model.Film;
+import cinema.model.FiltroClasseData;
 import cinema.repository.FilmRepository;
 import cinema.repository.FilmRepositoryImp;
+import cinema.repository.FiltroDataImp;
 
 
 
@@ -32,6 +35,7 @@ public class MondoCinemaGui implements PanelSwitcher{
     private PannelloTabella pannelloTabella;
     private PannelloAddFilm pannelloAddFilm;
     private FilmRepository filmRepository = new FilmRepositoryImp();
+    private FiltroDataImp filtroData = new FiltroDataImp();
     
     
     
@@ -53,12 +57,14 @@ public class MondoCinemaGui implements PanelSwitcher{
        // JMenuItem caricaRecita=new JMenuItem("Carica");
         JMenu proiezioni=new JMenu("Proiezioni");
         JMenuItem caricaProiezioni=new JMenuItem("Carica");
+        JMenuItem proiezioniMese = new JMenuItem("ProiezioneMese");
        // JMenu sale=new JMenu("Sale");
        // JMenuItem caricaSale=new JMenuItem("Carica");
         film.add(caricaFilm);
        // sale.add(caricaSale);
        // recita.add(caricaRecita);
         proiezioni.add(caricaProiezioni);
+        proiezioni.add(proiezioniMese);
         attori.add(caricaAttori);
 
         
@@ -181,6 +187,15 @@ public class MondoCinemaGui implements PanelSwitcher{
 				switchTo(pannelloTabella);
 			}
         	
+        });
+        proiezioniMese.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                PannelloTabella pannelloFiltro= new PannelloMesi(MondoCinemaGui.this);
+                pannelloFiltro.cercaTable();
+                switchTo(pannelloFiltro);
+            }
         });
        // this.frame.add(this.pannelloTabella, BorderLayout.CENTER);
        // this.pannelloTabella();

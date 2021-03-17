@@ -18,7 +18,7 @@ public class FilmRepositoryImp implements FilmRepository {
 
 	        int isSaved = 0;
 	        try {
-	            preparedStatement = conn.prepareStatement("INSERT INTO film VALUES(null,?,?,?,?,?)");
+	            preparedStatement = conn.prepareStatement("INSERT INTO film VALUES(?,?,?,?,?)");
 
 	            preparedStatement.setInt(1, film.getCodFilm());
 	            preparedStatement.setString(2, film.getTitolo());
