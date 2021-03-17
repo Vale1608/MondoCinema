@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 import cinema.model.FiltroClasseData;
 import cinema.model.Proiezioni;
 
-public class FiltroDataImp  {
+public class FiltroDataImp implements FiltroData {
 
 	
 	

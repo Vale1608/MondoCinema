@@ -34,7 +34,7 @@ public class PannelloMesi extends PannelloTabella implements FiltroInterfaccia{
 	
 	public void cercaTable() {
 		// TODO Auto-generated method stub
-		String input = JOptionPane.showInputDialog("Inserire numero mese");
+		String input = JOptionPane.showInputDialog("Inserire numero mese (2 cifre) ");
 		String mesi= "-"+input+"-";
         //potevamo mettere un menu a tendina da far selezionare
         
