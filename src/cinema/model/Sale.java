@@ -1,11 +1,12 @@
 package cinema.model;
+//filtra sale per citta
 
 public class Sale {
 	
 	private int codSala;
 	private int posti;
 	private String nome;
-	private String Citta;
+	private String citta;
 	
 	public Sale() {
 		
@@ -15,10 +16,10 @@ public class Sale {
 		this.codSala = codSala;
 	}
 	
-	public Sale(int posti, String nome, String Citta) {
+	public Sale(int posti, String nome, String citta) {
 		this.posti= posti;
 		this.nome = nome;
-		this.Citta = Citta;
+		this.citta = citta;
 	}
 	
 
@@ -33,7 +34,7 @@ public class Sale {
 	
 	@Override
 	public String toString() {
-		String s = ""+this.nome+" "+this.posti+" "+this.Citta;
+		String s = ""+this.nome+" "+this.posti+" "+this.citta;
 		return s;
 	}
 
@@ -62,11 +63,11 @@ public class Sale {
 	}
 
 	public String getCitta() {
-		return Citta;
+		return citta;
 	}
 
-	public void setCitta(String Citta) {
-		this.Citta = Citta;
+	public void setCitta(String citta) {
+		this.citta = citta;
 	}
 	
 	

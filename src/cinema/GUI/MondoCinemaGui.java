@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
 
 import cinema.model.Film;
+import cinema.model.Sale;
 import cinema.repository.FilmRepository;
 import cinema.repository.FilmRepositoryImp;
 
@@ -31,9 +32,12 @@ public class MondoCinemaGui implements PanelSwitcher{
     private PannelloTabellaAttori pannelloTabella2;
     private PannelloTabella pannelloTabella;
     private PannelloAddFilm pannelloAddFilm;
+    private PannelloFiltraPerCitta pannelloFiltraPerCitta;
+    private PannelloTabellaFiltraPerCitta pannelloTabellaFiltraPerCitta;
     private FilmRepository filmRepository = new FilmRepositoryImp();
     
-    
+    private Sale sale;
+    private String citta;
     
     public MondoCinemaGui(String title) {
     	this.frame = new JFrame();
@@ -74,11 +78,23 @@ public class MondoCinemaGui implements PanelSwitcher{
         JMenuItem listafilm = new JMenuItem("ListaFilm");
         JMenuItem codFilm=new JMenuItem("CodFilm");
         JMenuItem titoloeanno=new JMenuItem("Titolo e Anno");
+        JMenuItem salePerCitta = new JMenuItem("Sale per Città");
         
         filtraper.add(titoloeCod);
         filtraper.add(listafilm);
         filtraper.add(codFilm);
         filtraper.add(titoloeanno);
+        
+        filtraper.add(salePerCitta);
+        pannelloFiltraPerCitta = new PannelloFiltraPerCitta(this);
+        salePerCitta.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pannelloFiltraPerCitta();
+			}
+		});
+        
         
         comandi.add(filtraper);
         
@@ -109,7 +125,7 @@ public class MondoCinemaGui implements PanelSwitcher{
         addFilm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            	
                 pannelloAddFilm();
 
             }
@@ -239,6 +255,24 @@ public class MondoCinemaGui implements PanelSwitcher{
 
 	        }
 	    }
+	@Override
+	public void pannelloFiltraPerCitta() {
+		switchTo(pannelloFiltraPerCitta);
+		
+	} 
+	
+	public void setCitta(String citta) {
+		this.citta = citta;
+	}
 
+
+	@Override
+	public void pannelloTabellaFiltraPerCitta(String citta) {
+		this.pannelloTabellaFiltraPerCitta = new PannelloTabellaFiltraPerCitta(this);
+		this.pannelloTabellaFiltraPerCitta.setCitta(citta);
+		this.pannelloTabellaFiltraPerCitta.cercaTable();
+		switchTo(pannelloTabellaFiltraPerCitta);
+		
+	}
 
 }
