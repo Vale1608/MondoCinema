@@ -19,7 +19,7 @@ import java.sql.SQLException;
 	            //controllare dentro l'interno
 	            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hollywood?serverTimezone=Europe/Rome",
 	                    "root",
-	                    "zebratangoalfa");
+	                    "");
 	        } catch (ClassNotFoundException | SQLException e) {
 	            e.printStackTrace();
 	        }
