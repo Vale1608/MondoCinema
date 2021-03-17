@@ -15,6 +15,7 @@ public interface FilmRepository {
     Film cerca(String titolo,int codFilm);
     List<Film> film();
     //get qualcosa in base ai paramentri film
+    
     Film getFilm(Integer id);
     Film getFilm(String titolo, String annoProduzione);
 	

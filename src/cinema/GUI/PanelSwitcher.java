@@ -4,4 +4,6 @@ public interface PanelSwitcher {
 	
 	void pannelloTabella();
     void pannelloAddFilm();
+	
+	
 }

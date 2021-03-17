@@ -213,25 +213,27 @@ public class AttoriRepositoryImp implements AttoriRepository
 	}
 
 	@Override
-	public Attori getAttori(String nome, int annoNascita) {
+	public List<Attori> getAttori( String Nazionalita) {
 		
 		Connection conn = ConnectionDatabase.getConnection();
-		Attori attori=null;
+		List<Attori> attori=new ArrayList<>();
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM attori WHERE nome=? and AnnoNascita=?");
-			preparedStatement.setString(1,nome );
-			preparedStatement.setInt(2,annoNascita);
+			preparedStatement = conn.prepareStatement("SELECT * FROM attori WHERE Nazionalita=?");
+			
+			preparedStatement.setString(1,Nazionalita);
 			
 			ResultSet resultSet=preparedStatement.executeQuery();
-			if(resultSet.next()) {
-				attori=new Attori();
+			while(resultSet.next()) {
+				Attori a=new Attori();
 				
-				attori.setCodAttore(resultSet.getInt("CodAttore"));
-				attori.setNome(resultSet.getString("Nome"));
-				attori.setAnnoNascita(resultSet.getInt("AnnoNascita"));
-				attori.setNazionalita(resultSet.getString("Nazionalita"));
+				a.setCodAttore(resultSet.getInt("CodAttore"));
+				a.setNome(resultSet.getString("Nome"));
+				a.setAnnoNascita(resultSet.getInt("AnnoNascita"));
+				a.setNazionalita(resultSet.getString("Nazionalita"));
+				
+				attori.add(a);
 			}
 			
 		}catch(SQLException e) {
@@ -246,8 +248,8 @@ public class AttoriRepositoryImp implements AttoriRepository
 			}
 			
 		}
-		return attori;
-			
+		
+		return attori;	
 	}	
 	
 }

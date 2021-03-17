@@ -119,14 +119,16 @@ public PannelloAddFilm(PanelSwitcher panelSwitcher) {
 
            
             String codiceFilm=textCodFilm.getText();
-            int codFilm = Integer.parseInt(codiceFilm);
+          //  int codFilm = Integer.parseInt(codiceFilm);
             String titolo = textTitolo.getText();
             String annoProduzione = textAnnoProduzione.getText();
             String nazionalita = textNazionalita.getText();
             String regista = textRegista.getText();
             String genere = textGenere.getText();
+            
         }
     }
 }
+
    
 

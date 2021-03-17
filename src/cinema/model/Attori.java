@@ -47,7 +47,7 @@ public class Attori {
 	}
 
 	public void setNazionalita(String Nazionalita) {
-		Nazionalita = Nazionalita;
+		this.Nazionalita = Nazionalita;
 	}
 	
 	@Override

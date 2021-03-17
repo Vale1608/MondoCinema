@@ -59,7 +59,15 @@ public class PannelloTabellaAttori extends PannelloTabella {
     this.sp = new JScrollPane(this.attori);
     this.add(this.sp);
 	}
+	
+
+	
+	
+	
 }
+
+
+
 
 
 	

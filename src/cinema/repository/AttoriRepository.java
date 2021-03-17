@@ -17,7 +17,8 @@ public interface AttoriRepository {
     List<Attori> attori();
     //get qualcosa in base ai paramentri film
     Attori getAttori(Integer id);
-    Attori getAttori(String nome, int annoNascita);
+    List<Attori> getAttori( String Nazionalita);
+    
 
 
 

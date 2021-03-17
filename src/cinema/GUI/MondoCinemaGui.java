@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -15,7 +17,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
 
+import cinema.model.Attori;
 import cinema.model.Film;
+import cinema.repository.AttoriRepository;
+import cinema.repository.AttoriRepositoryImp;
 import cinema.repository.FilmRepository;
 import cinema.repository.FilmRepositoryImp;
 
@@ -31,8 +36,13 @@ public class MondoCinemaGui implements PanelSwitcher{
     private PannelloTabellaAttori pannelloTabella2;
     private PannelloTabella pannelloTabella;
     private PannelloAddFilm pannelloAddFilm;
-    private FilmRepository filmRepository = new FilmRepositoryImp();
     
+    private PannelloCercaPerNazionalita pannelloCercaPerNazionalita;
+    private FilmRepository filmRepository = new FilmRepositoryImp();
+    private AttoriRepository attoriRepository=new AttoriRepositoryImp();
+    
+    private Attori attori;
+    private String nazionalita;
     
     
     public MondoCinemaGui(String title) {
@@ -47,6 +57,7 @@ public class MondoCinemaGui implements PanelSwitcher{
         JMenu comandi = new JMenu("Comandi");
         JMenu attori=new JMenu("Attori");
         JMenuItem caricaAttori=new JMenuItem("Carica");
+        JMenuItem cercaPerNazionalita=new JMenuItem("CercaPerNazionalita");
         JMenu film=new JMenu("Film");
         JMenuItem caricaFilm=new JMenuItem("Carica");
        // JMenu recita=new JMenu("Recita");
@@ -60,6 +71,7 @@ public class MondoCinemaGui implements PanelSwitcher{
        // recita.add(caricaRecita);
         proiezioni.add(caricaProiezioni);
         attori.add(caricaAttori);
+        attori.add(cercaPerNazionalita);
 
         
         JMenuItem addFilm = new JMenuItem("AddFilm");
@@ -114,8 +126,10 @@ public class MondoCinemaGui implements PanelSwitcher{
 
             }
         });
-
-        update.addActionListener(new ActionListener() {
+        
+    
+        
+        	update.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String input = JOptionPane.showInputDialog("Dammi il codice del film da aggiornare");
@@ -147,6 +161,8 @@ public class MondoCinemaGui implements PanelSwitcher{
   
         
         pannelloAddFilm = new PannelloAddFilm(this);
+        
+      
        
      
         caricaAttori.addActionListener(new ActionListener() {
@@ -182,6 +198,19 @@ public class MondoCinemaGui implements PanelSwitcher{
 			}
         	
         });
+        
+       
+        cercaPerNazionalita.addActionListener(new ActionListener() {
+ 			
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				pannelloTabella = new PannelloCercaPerNazionalita(MondoCinemaGui.this);
+				pannelloTabella.cercaTable();
+				switchTo(pannelloTabella);
+ 			}
+ 		});
+        
+      
        // this.frame.add(this.pannelloTabella, BorderLayout.CENTER);
        // this.pannelloTabella();
         this.frame.setVisible(true);
@@ -239,6 +268,5 @@ public class MondoCinemaGui implements PanelSwitcher{
 
 	        }
 	    }
-
 
 }
