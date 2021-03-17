@@ -26,6 +26,8 @@ import cinema.repository.FiltroDataImp;
 
 public class MondoCinemaGui implements PanelSwitcher{
 	
+	private int numero;
+	
 	private final int WIDTH = 800;
     private final int HEIGTH = 600;
     private JFrame frame;
@@ -33,7 +35,9 @@ public class MondoCinemaGui implements PanelSwitcher{
     
     private PannelloTabellaAttori pannelloTabella2;
     private PannelloTabella pannelloTabella;
+    private PannelloTabellaActorsForFilm pannelloTabellaActorsForFilm;
     private PannelloAddFilm pannelloAddFilm;
+    private PannelloFiltraPerCodFilm PannelloCodFilm;
     private FilmRepository filmRepository = new FilmRepositoryImp();
     private FiltroDataImp filtroData = new FiltroDataImp();
     
@@ -112,6 +116,16 @@ public class MondoCinemaGui implements PanelSwitcher{
         menuBar.add(proiezioni);
         //menuBar.add(sale);
         
+        titoloeCod.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+
+        		PannelloFiltraPerCodFilm();
+
+            }
+        });
+        
+        PannelloCodFilm = new PannelloFiltraPerCodFilm(this);
+        
         addFilm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -120,6 +134,8 @@ public class MondoCinemaGui implements PanelSwitcher{
 
             }
         });
+        
+        this.PannelloCodFilm=new PannelloFiltraPerCodFilm(this);
 
         update.addActionListener(new ActionListener() {
             @Override
@@ -226,6 +242,15 @@ public class MondoCinemaGui implements PanelSwitcher{
 	     switchTo(pannelloAddFilm);
 	}
 	
+	@Override
+	public void PannelloFiltraPerCodFilm() {
+		switchTo(PannelloCodFilm);
+	}
+	
+	
+	
+	
+	
 //	private void switchTo(PannelloAddFilm pannelloFilm) {
 //		// TODO Auto-generated method stub
 //		this.frame.setContentPane(pannelloAddFilm);
@@ -254,6 +279,22 @@ public class MondoCinemaGui implements PanelSwitcher{
 
 	        }
 	    }
+	 
+	@Override
+	public void setNumero(int n) {
+		// TODO Auto-generated method stub
+		this.numero=n;
+	}
+
+
+	@Override
+	public void pannelloTabellaCodFilm(int n) {
+		// TODO Auto-generated method stub
+		this.pannelloTabellaActorsForFilm=new PannelloTabellaActorsForFilm(this);
+		this.pannelloTabellaActorsForFilm.setNumero(n);
+		this.pannelloTabellaActorsForFilm.cercaTable();
+		switchTo(this.pannelloTabellaActorsForFilm);
+	}
 
 
 }
